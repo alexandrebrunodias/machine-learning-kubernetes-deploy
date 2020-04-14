@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: flasksklearn-deployment
+
+spec:
+  selector:
+    matchLabels:
+      name: flasksklearn-pod-deployment
+  template:
+    metadata:
+      labels:
+        name: flasksklearn-pod-deployment
+    spec:
+      containers:
+        - name: flasksklearn
+          image: alexdias/flasksklearn:latest
+          ports:
+            - containerPort: 80

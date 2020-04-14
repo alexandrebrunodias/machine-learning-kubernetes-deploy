@@ -1,0 +1,14 @@
+first run:
+    deployment.apps/flasksklearn-deployment created
+    service/flasksklearn-service created
+    NAME                                      READY   STATUS              RESTARTS   AGE
+    flasksklearn-deployment-b474f7996-9zltf   0/1     ContainerCreating   0          1s
+
+    FLASKSKELARN URL: http://172.17.0.2:32539
+second run:
+    deployment.apps/flasksklearn-deployment unchanged
+    service/flasksklearn-service unchanged
+    NAME                                      READY   STATUS    RESTARTS   AGE
+    flasksklearn-deployment-b474f7996-9zltf   1/1     Running   0          33s
+
+    FLASKSKELARN URL: http://172.17.0.2:32539
