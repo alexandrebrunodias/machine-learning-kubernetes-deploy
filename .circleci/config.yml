@@ -9,10 +9,10 @@ jobs:
     steps:
       - checkout
 
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "requirements.txt" }}
-      #       - v1-dependencies-
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -25,10 +25,10 @@ jobs:
             wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64 &&\
                 chmod +x /bin/hadolint
 
-      # - save_cache:
-      #     paths:
-      #       - ./venv
-      #     key: v1-dependencies-{{ checksum "requirements.txt" }}
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: run lint
@@ -37,7 +37,7 @@ jobs:
             make lint
       
       - run:
-          name: Tests
+          name: Load tests
           command: |
             . venv/bin/activate
             make test
